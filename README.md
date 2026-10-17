@@ -1,8 +1,8 @@
 # DSH Thinking Models / 三种逻辑模型思维技能
 
-三个可安装的 Agent 技能（`SKILL.md` 格式），把一个宽泛的「好好想一下」变成**可审计的产物**：林状图、网状图、公式图。
+三个可安装的 Agent 技能（`SKILL.md` 格式），把一个宽泛的「好好想一下」变成**可审计的产物**：林状图、网状图、公式图。外加第四个技能——一件**反面教材**：把「先有答案、再补理由」的走形摊开，供交付前三张图之前自查。
 
-Three installable agent skills (SKILL.md format) that turn a vague "think harder" into **auditable artifacts**: a causation forest, a weighted association web, and a formula with declared boundaries.
+Three installable agent skills (SKILL.md format) that turn a vague "think harder" into **auditable artifacts**: a causation forest, a weighted association web, and a formula with declared boundaries. A fourth skill is a deliberate **anti-pattern**: it audits an answer for presupposed-answer backtracking before delivery.
 
 > 这套方法从哪来、为什么坚持先画结构再下结论——见文末 [后记](#后记这套方法是怎么来的)。
 
@@ -11,6 +11,7 @@ Three installable agent skills (SKILL.md format) that turn a vague "think harder
 | 🌳 林状分层分类回溯法 | **林状图** ／ **回溯法** | `forest-hierarchical-backtracking` | 多根因果林 + 无关边清单 | 「根源在哪」「为什么会出错」「核心是什么」「本质是什么」 |
 | 🕸️ 网状线索关联穷举法 | **网状图** ／ **穷举法** | `web-association-exhaustive` | 带权关联网 ＝ 一张穷举表 | 「有哪些可能」「还有什么没考虑到」「换个角度」 |
 | 📐 经验公式质点代入法 | **公式图** ／ **代入法** | `formula-pointmass-substitution` | 函数等式 + 质点假设 + 适用边界 | 「预估一下」「帮我推算」「建个模型」「大概多少」 |
+| 🧪 预设答案假设倒推法 | **倒推图** ／ **倒推法** | `presupposed-answer-hypothesis-backderivation` | 假设—证据链 + 走形命中的诊断报告 | 「我是不是先有答案了」「帮我审一下这段推理」「这是不是确认偏误」 |
 
 ### 命名结构
 
@@ -21,10 +22,13 @@ Three installable agent skills (SKILL.md format) that turn a vague "think harder
 | 林状 ｜ 分层分类 ｜ 回溯法 | `forest` ｜ `hierarchical` ｜ `backtracking` |
 | 网状 ｜ 线索关联 ｜ 穷举法 | `web` ｜ `association` ｜ `exhaustive` |
 | 经验公式 ｜ 质点 ｜ 代入法 | `formula` ｜ `pointmass` ｜ `substitution` |
+| 预设答案 ｜ 假设 ｜ 倒推法 | `presupposed-answer` ｜ `hypothesis` ｜ `backderivation` |
 
 「图」是产物，「法」是动作：林状图＝回溯法画出来的，网状图＝穷举法画出来的，公式图＝代入法画出来的。
 
-三个技能互相有优先级约定：不确定用哪个时默认穷举；复杂问题按 林状图 → 网状图 → 公式图 联用。
+三个作答技能互相有优先级约定：不确定用哪个时默认穷举；复杂问题按 林状图 → 网状图 → 公式图 联用。
+
+第四个技能（倒推图）不是作答模式，是**交付前的审计器**：它审「这段推理是怎么来的」，不产出答案。触发条件是已经有一个想要的结论、正在倒着找理由。
 
 ---
 
@@ -47,6 +51,24 @@ Three installable agent skills (SKILL.md format) that turn a vague "think harder
 
 > 这套方法的关键不在图上有什么，而在图上**没有哪条边**。
 > 缺了第 4 条动作，产物就从「审查过的结构」退化成「想过的痕迹」——这也正是它区别于自由推理的地方。
+
+### 第四张图：倒推图（反面教材，审计用）
+
+前三个技能都在**回答问题**；它不。它审的是「这个问题是被怎么回答掉的」。
+
+**预设答案假设倒推法** ＝ 先假定答案成立，再倒着补理由。数学类比：给定 x 的公式、问 x 的取值范围 → 先假设 `x>0` → 代入验算是否成立。
+
+危险不在「先假设」。危险在两件事同时发生：只假设了**自己希望成立的那一种**（x=0、x<0 压根没试），以及假设被推翻时**换的是检验标准，不是假设**。
+
+它堕落成反面教材需要三个条件同时成立（反过来读就是合法用法）：
+
+1. 假设没有显式声明，读者以为那是事实
+2. 只做确认性检验，不尝试证伪
+3. 反例出现后，改的是标准／数据／题面，而不是假设
+
+六种典型走形各带检测信号与纠正目标：单一假设、确认性检验、反例豁免、事后改标准、假设升格为事实、循环论证——完整表见技能正文。
+
+它和前三张图的关系是**负边审计器**：三张图共同的病根是「负边被主观偏好悄悄剪掉」，倒推图专门把这件事摊在桌面上。交付任何一张图之前，都可以先用它过一遍。
 
 ---
 
@@ -72,7 +94,7 @@ DeepSeek Harness + [Skills Manager](https://github.com/MichengAI/dsh-skills-mana
 | 跨 Agent 共享 | `~/.agents/skills/<skill-id>/SKILL.md`（DSH 的 `DSH_AGENTS_HOME` 可覆盖） |
 | 项目内（随仓库提交） | `<project>/.dsh/skills/<skill-id>/SKILL.md` |
 
-把仓库里的三个目录整个拷过去即可，不需要构建、没有依赖。
+把仓库里的四个技能目录整个拷过去即可，不需要构建、没有依赖。
 
 ```powershell
 $dst = "$HOME\.dsh\skills"
@@ -80,7 +102,8 @@ New-Item -ItemType Directory -Force -Path $dst | Out-Null
 Copy-Item -Recurse -Force `
   .\forest-hierarchical-backtracking, `
   .\web-association-exhaustive, `
-  .\formula-pointmass-substitution $dst
+  .\formula-pointmass-substitution, `
+  .\presupposed-answer-hypothesis-backderivation $dst
 ```
 
 ### 3. skills.sh / Claude Code / Cursor 等
@@ -104,10 +127,15 @@ npx skills add <owner>/dsh-thinking-models
 ├── forest-hierarchical-backtracking/SKILL.md   # 🌳 林状分层分类回溯法
 ├── web-association-exhaustive/SKILL.md         # 🕸️ 网状线索关联穷举法
 ├── formula-pointmass-substitution/SKILL.md     # 📐 经验公式质点代入法
+├── presupposed-answer-hypothesis-backderivation/SKILL.md  # 🧪 预设答案假设倒推法（反面教材）
 ├── examples/                                   # 每个模式一组输入 → 完整产物
 │   ├── forest-hierarchical-backtracking.md
 │   ├── web-association-exhaustive.md
-│   └── formula-pointmass-substitution.md
+│   ├── formula-pointmass-substitution.md
+│   └── presupposed-answer-hypothesis-backderivation.md
+├── docs/                                       # 实验记录与论文流水线
+│   ├── benchmark/README.md                     # 三题面 + 指标定义 + 已跑数据 + 诚实声明
+│   └── paper/pipeline.md                       # 论文阶段与本项目的映射
 ├── README.md
 └── LICENSE
 ```
@@ -121,8 +149,8 @@ npx skills add <owner>/dsh-thinking-models
 - **流程进技能，纪律进宿主。** 技能正文只在被调用那一次进入上下文。所以「每轮标注当前模式」「固定输出格式」这类常驻约束**不能**只写在技能里，必须由宿主的常驻指令（如 `AGENTS.md`）承担。本仓库只装流程与产物形状。
 - **`description` 是唯一的路由信号。** 决定技能会不会被加载的就是这一行，所以写成中英双语 + 具体触发词，而不是抽象的能力描述。
 - **每个技能都自带失效条件。** 「风险与对策」节是刻意保留的：它告诉模型这套方法在什么时候不成立，比再写十条使用建议有用。
-- **负边优先于正边。** 每张图都强制要求交付「被排除／被忽略」的部分。这是三套语法共同的纪律，也是它们相对自由推理唯一可验证的差异。
-- **产物优先于论述。** 三个技能都要求先给结构（林／网／式），再给结论。
+- **负边优先于正边。** 每张图都强制要求交付「被排除／被忽略」的部分。这是三套语法共同的纪律，也是它们相对自由推理唯一可验证的差异；倒推图就是专门审这条纪律有没有被主观偏好偷偷绕过。
+- **产物优先于论述。** 三个作答技能都要求先给结构（林／网／式），再给结论。倒推图反过来：它先审「这个结构是怎么来的」。
 
 ## 适用边界（诚实版）
 
