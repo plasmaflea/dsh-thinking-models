@@ -138,6 +138,8 @@ npx skills add <owner>/dsh-thinking-models
 ├── docs/                                       # 实验记录与论文流水线
 │   ├── benchmark/README.md                     # 三题面 + 指标定义 + 已跑数据 + 诚实声明
 │   └── paper/pipeline.md                       # 论文阶段与本项目的映射
+├── scripts/
+│   └── bench-before.ps1 / bench-before.cmd     # 对照组环境开关（撤技能 + 撤 AGENTS.md，可逆）
 ├── README.md
 └── LICENSE
 ```
