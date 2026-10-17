@@ -1,11 +1,12 @@
 ---
-name: root-cause-forest
+name: forest-hierarchical-backtracking
 description: 定位根源与故障排查——用户问「根源在哪」「为什么会出错」「核心是什么」「本质是什么」、要求追根因或排故障时使用。全称林状分层分类回溯法，简称林状图／回溯法：按正交维度把问题分裂成多棵独立子树，各子树并行回溯寻根，在汇合层合并，从根解决。Use for root-cause analysis and failure diagnosis.
 ---
 
 # 🌳 林状分层分类回溯法
 
-**简称**：林状图（产物）／回溯法（方法）。
+**简称**：林状图（产物）／回溯法（方法）
+**技能 id**：`forest-hierarchical-backtracking`＝森林·分层·回溯，与全称的三段结构一一对应
 
 ## 这张图是什么
 

@@ -1,11 +1,12 @@
 ---
-name: clue-web-exhaustive
+name: web-association-exhaustive
 description: 探索未知、发现关联、创新组合——用户问「有哪些可能」「还有什么没考虑到」「换个角度」「有没有别的思路」、需要穷举备选方案时使用。全称网状线索关联穷举法，简称网状图／穷举法：拆解线索、按物理距离与关联度建网、穷举遍历，产出一张穷举表并逐行收敛。Use for exhaustive option enumeration and association mapping; also the default mode when the right mode is unclear.
 ---
 
 # 🕸️ 网状线索关联穷举法
 
-**简称**：网状图（产物）／穷举法（方法）。
+**简称**：网状图（产物）／穷举法（方法）
+**技能 id**：`web-association-exhaustive`＝网·关联·穷举，与全称的三段结构一一对应
 
 ## 这张图是什么
 

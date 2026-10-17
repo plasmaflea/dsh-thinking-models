@@ -4,13 +4,23 @@
 
 Three installable agent skills (SKILL.md format) that turn a vague "think harder" into **auditable artifacts**: a causation forest, a weighted association web, and a formula with declared boundaries.
 
-| 技能 / Skill | 全称 | 简称 | 产物 | 触发 |
+| 全称 | 简称（产物／动作） | 技能 id | 产物 | 触发 |
 |---|---|---|---|---|
-| `root-cause-forest` | 🌳 林状分层分类回溯法 | **林状图**（产物）/ **回溯法**（动作） | 多根因果林 + 被排除分支清单 | 「根源在哪」「为什么会出错」「核心是什么」「本质是什么」 |
-| `clue-web-exhaustive` | 🕸️ 网状线索关联穷举法 | **网状图**（产物）/ **穷举法**（动作） | 带权关联网 ＝ 一张穷举表 | 「有哪些可能」「还有什么没考虑到」「换个角度」 |
-| `point-mass-estimation` | 📐 经验公式质点代入法 | **公式图**（产物）/ **代入法**（动作） | 函数等式 + 质点假设 + 适用边界 | 「预估一下」「帮我推算」「建个模型」「大概多少」 |
+| 🌳 林状分层分类回溯法 | **林状图** ／ **回溯法** | `forest-hierarchical-backtracking` | 多根因果林 + 无关边清单 | 「根源在哪」「为什么会出错」「核心是什么」「本质是什么」 |
+| 🕸️ 网状线索关联穷举法 | **网状图** ／ **穷举法** | `web-association-exhaustive` | 带权关联网 ＝ 一张穷举表 | 「有哪些可能」「还有什么没考虑到」「换个角度」 |
+| 📐 经验公式质点代入法 | **公式图** ／ **代入法** | `formula-pointmass-substitution` | 函数等式 + 质点假设 + 适用边界 | 「预估一下」「帮我推算」「建个模型」「大概多少」 |
 
-全称的构词法本身就是这套方法的结构：**「图」是产物，「法」是动作**。林状图＝回溯法画出来的东西，网状图＝穷举法画出来的东西，公式图＝代入法画出来的东西。
+### 命名结构
+
+技能 id 是中文全称的**逐段直译**，不是另取的标签——`图名 · 核心限定 · 法名`：
+
+| 中文全称的分段 | 英文 id 的分段 |
+|---|---|
+| 林状 ｜ 分层分类 ｜ 回溯法 | `forest` ｜ `hierarchical` ｜ `backtracking` |
+| 网状 ｜ 线索关联 ｜ 穷举法 | `web` ｜ `association` ｜ `exhaustive` |
+| 经验公式 ｜ 质点 ｜ 代入法 | `formula` ｜ `pointmass` ｜ `substitution` |
+
+「图」是产物，「法」是动作：林状图＝回溯法画出来的，网状图＝穷举法画出来的，公式图＝代入法画出来的。
 
 三个技能互相有优先级约定：不确定用哪个时默认穷举；复杂问题按 林状图 → 网状图 → 公式图 联用。
 
@@ -56,16 +66,19 @@ DeepSeek Harness + [Skills Manager](https://github.com/MichengAI/dsh-skills-mana
 
 | 作用域 | 路径 |
 |---|---|
-| DSH 全局 | `~/.dsh/skills/<skill-name>/SKILL.md` |
-| 跨 Agent 共享 | `~/.agents/skills/<skill-name>/SKILL.md`（DSH 的 `DSH_AGENTS_HOME` 可覆盖） |
-| 项目内（随仓库提交） | `<project>/.dsh/skills/<skill-name>/SKILL.md` |
+| DSH 全局 | `~/.dsh/skills/<skill-id>/SKILL.md` |
+| 跨 Agent 共享 | `~/.agents/skills/<skill-id>/SKILL.md`（DSH 的 `DSH_AGENTS_HOME` 可覆盖） |
+| 项目内（随仓库提交） | `<project>/.dsh/skills/<skill-id>/SKILL.md` |
 
 把仓库里的三个目录整个拷过去即可，不需要构建、没有依赖。
 
 ```powershell
 $dst = "$HOME\.dsh\skills"
 New-Item -ItemType Directory -Force -Path $dst | Out-Null
-Copy-Item -Recurse -Force .\root-cause-forest,.\clue-web-exhaustive,.\point-mass-estimation $dst
+Copy-Item -Recurse -Force `
+  .\forest-hierarchical-backtracking, `
+  .\web-association-exhaustive, `
+  .\formula-pointmass-substitution $dst
 ```
 
 ### 3. skills.sh / Claude Code / Cursor 等
@@ -86,13 +99,13 @@ npx skills add <owner>/dsh-thinking-models
 
 ```
 .
-├── root-cause-forest/SKILL.md
-├── clue-web-exhaustive/SKILL.md
-├── point-mass-estimation/SKILL.md
-├── examples/                 # 每个模式一组输入 → 产物样例
-│   ├── root-cause-forest.md
-│   ├── clue-web-exhaustive.md
-│   └── point-mass-estimation.md
+├── forest-hierarchical-backtracking/SKILL.md   # 🌳 林状分层分类回溯法
+├── web-association-exhaustive/SKILL.md         # 🕸️ 网状线索关联穷举法
+├── formula-pointmass-substitution/SKILL.md     # 📐 经验公式质点代入法
+├── examples/                                   # 每个模式一组输入 → 完整产物
+│   ├── forest-hierarchical-backtracking.md
+│   ├── web-association-exhaustive.md
+│   └── formula-pointmass-substitution.md
 ├── README.md
 └── LICENSE
 ```
@@ -119,7 +132,7 @@ npx skills add <owner>/dsh-thinking-models
 
 ## 兼容性 / Compatibility
 
-`SKILL.md` + YAML frontmatter（`name`、`description`）是跨 Agent 的通用格式，不依赖任何私有字段。在 DeepSeek Harness 与 Skills Manager 的目录扫描下验证通过。
+`SKILL.md` + YAML frontmatter（`name`、`description`）是跨 Agent 的通用格式，不依赖任何私有字段。`name` 必须是 ASCII kebab-case，所以中文全称放在正文与 `description` 里，id 用逐段直译。在 DeepSeek Harness 与 Skills Manager 的目录扫描下验证通过。
 
 ## 许可 / License
 

@@ -1,11 +1,12 @@
 ---
-name: point-mass-estimation
+name: formula-pointmass-substitution
 description: 预测估算、建模推演、迭代优化——用户说「预估一下」「帮我推算」「建个模型」「大概多少」、需要快速估算或类比建模时使用。全称经验公式质点代入法，简称公式图／代入法：抽象化、把问题简化为单自由度质点、选经验公式或类比、代入运算、迭代收敛，并显式声明简化假设与边界。Use for estimation, modeling, and prediction with explicit assumptions.
 ---
 
 # 📐 经验公式质点代入法
 
-**简称**：公式图（产物）／代入法（方法）。
+**简称**：公式图（产物）／代入法（方法）
+**技能 id**：`formula-pointmass-substitution`＝公式·质点·代入，与全称的三段结构一一对应
 
 ## 这张图是什么
 
