@@ -70,6 +70,8 @@ Three installable agent skills (SKILL.md format) that turn a vague "think harder
 
 它和前三张图的关系是**负边审计器**：三张图共同的病根是「负边被主观偏好悄悄剪掉」，倒推图专门把这件事摊在桌面上。交付任何一张图之前，都可以先用它过一遍。
 
+> 只想研究**普通人思维本身**、不需要三张图当参照时，用姊妹仓库 [dsh-ordinary-thinking](https://github.com/plasmaflea/dsh-ordinary-thinking) 里的**模拟版**：同一模型，但它不判对错，只跑轨迹、记「运气／迟到调整／改题面」三条通道。两版可同时安装（id 不同）。
+
 ---
 
 ## 安装 / Install
