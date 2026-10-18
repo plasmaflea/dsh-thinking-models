@@ -122,7 +122,7 @@ git push; git push --tags
 - **正确性未测**：v4 林状图只在一道题上验过结构项（10/10），没有任何带 ground truth 的实验，因此不能声称「更准」。
 - **论文**：ACL 2027 ARR 截止 2027-01-04（京都，2027-08-17~22；long 8 页；缺 limitations 直接拒）。当前最现实的是 arXiv + workshop 起步。
 - **n=1**：before 三个条件（网页版／裸机／装技能）各只有一次运行。
-- 极限与缺陷探测的题集设计见 `docs/benchmark/stress.md`（若有）。
+- 极限与缺陷探测题集已设计：`docs/benchmark/stress.md`（12 题四组 + 反退化三项 + G 组注入实验，一次都没跑）。
 
 ## 9. 跨会话检索
 
