@@ -12,7 +12,7 @@
 | T9 消解根不可行 | 7586 / 8238 / 7780 / 8804 / 9643 | 136 | 25 |
 | T10 组织域（树外） | 7921 / 6625 / 5491 / 8286 / 5703 | 123 | 28 |
 
-**路由 20/20 命中 `forest-hierarchical-backtracking`**。其中 3 份（T7-a、T7-c、T10-a）额外加载 `presupposed-answer-hypothesis-backderivation` 做交付前负边审计，1 份（T7-c）再加载 `formula-pointmass-mass-substitution` 做量级收口。**没有一份走错模式**。
+**路由 20/20 命中 `forest-hierarchical-backtracking`**。其中 3 份（T7-a、T7-c、T10-a）额外加载 `presupposed-answer-hypothesis-backderivation` 做交付前负边审计，1 份（T7-c）再加载 `formula-pointmass-substitution` 做量级收口。**没有一份走错模式**。
 
 ## 二、判分（按预注册规则）
 
