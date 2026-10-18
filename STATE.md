@@ -26,7 +26,7 @@
 | 远端 | `https://github.com/plasmaflea/dsh-thinking-models.git`（origin） |
 | 可见性 | PUBLIC（Skills Manager 只扫公开仓库） |
 | 默认分支 | `main` |
-| 当前版本 | 见 `VERSION`（0.4.0）／标签 `v0.4.0` |
+| 当前版本 | 见 `VERSION`（0.4.4）／标签 `v0.4.4` |
 | topics | ai-agents, estimation, llm, prompt-engineering, reasoning, root-cause-analysis, skills |
 | 账号 | GitHub `plasmaflea`；`gh` CLI 已登录（scope: `gist, read:org, repo`） |
 | git 身份 | `plasmablue <1935153750@qq.com>` |
