@@ -1,4 +1,4 @@
-#Requires -Version 5.1
+﻿#Requires -Version 5.1
 <#
   state.ps1 - print the REAL state of a skills repo (git + installed copies + tree)
 
@@ -34,7 +34,7 @@ if ($ids.Count -eq 0) {
   $ids = @(
     'forest-hierarchical-backtracking',
     'web-association-exhaustive',
-    'formula-pointmass-substitution',
+    'structure-isomorphism-substitution',
     'presupposed-answer-hypothesis-backderivation'
   )
 }

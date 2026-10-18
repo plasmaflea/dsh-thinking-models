@@ -13,7 +13,7 @@
 |---|---|---|---|
 | `forest-hierarchical-backtracking` | 林状分层分类回溯法 | 林状图／回溯法 | 作答模式：根因定位，根落在大类上 |
 | `web-association-exhaustive` | 网状线索关联穷举法 | 网状图／穷举法 | 作答模式：穷举与关联映射，默认模式 |
-| `formula-pointmass-substitution` | 经验公式质点代入法 | 公式图／代入法 | 作答模式：估算建模，必须声明简化假设 |
+| `structure-isomorphism-substitution` | 结构同构代入法 | 结构图／代入法 | 作答模式：把陌生问题归到结构模式库的某类，必须校验变量集·边型·边界 |
 | `presupposed-answer-hypothesis-backderivation` | 预设答案假设倒推法 | 倒推图／倒推法 | **审计模式**：负面教材，只产出诊断报告，不作答 |
 
 姊妹仓库 `dsh-ordinary-thinking` 存放同一方法的**模拟版**（研究普通人思维本身，不追求正确答案）。
@@ -26,7 +26,7 @@
 | 远端 | `https://github.com/plasmaflea/dsh-thinking-models.git`（origin） |
 | 可见性 | PUBLIC（Skills Manager 只扫公开仓库） |
 | 默认分支 | `main` |
-| 当前版本 | 见 `VERSION`（0.5.0）／标签 `v0.5.0` |
+| 当前版本 | 见 `VERSION`（0.6.0）／标签 `v0.6.0` |
 | topics | ai-agents, estimation, llm, prompt-engineering, reasoning, root-cause-analysis, skills |
 | 账号 | GitHub `plasmaflea`；`gh` CLI 已登录（scope: `gist, read:org, repo`） |
 | git 身份 | `plasmablue <1935153750@qq.com>` |
@@ -38,6 +38,8 @@
 forest-.../tree/index.md          常量知识树索引（先读这个）
 forest-.../tree/software.md       软件大类树（六层：concurrency/quota/init/config/dependency/lifecycle）
 forest-.../tree/win-service.md    Windows 服务子类树
+structure-.../tree/index.md       结构模式库索引（6 个模式，v1）
+structure-.../tree/{multiplicative-rate,conservation,saturation,power-scale,additive-budget,queue-capacity}.md
 examples/<id>.md              ×4  每个技能一份完整样例（改动时要同步）
 docs/benchmark/README.md          before/after 实验：题面、指标、结果、诚实声明
 docs/benchmark/rubric-v4.md       v4 评分口径（10 项判定）
@@ -63,11 +65,12 @@ C:\Users\Administrator\.dsh\skills\<id>\SKILL.md
 ```powershell
 $src = 'D:\DeepSeek-levelup\dsh-thinking-models'
 $dst = "$env:USERPROFILE\.dsh\skills"
-foreach ($id in 'forest-hierarchical-backtracking','web-association-exhaustive','formula-pointmass-substitution','presupposed-answer-hypothesis-backderivation') {
+foreach ($id in 'forest-hierarchical-backtracking','web-association-exhaustive','structure-isomorphism-substitution','presupposed-answer-hypothesis-backderivation') {
   Copy-Item "$src\$id\SKILL.md" "$dst\$id\SKILL.md" -Force
 }
 # 知识树是技能正文的引用目标，必须一起同步
 Copy-Item "$src\forest-hierarchical-backtracking\tree\*" "$dst\forest-hierarchical-backtracking\tree\" -Recurse -Force
+Copy-Item "$src\structure-isomorphism-substitution\tree\*" "$dst\structure-isomorphism-substitution\tree\" -Recurse -Force
 ```
 
 约束（已验证，2026-10-18 修订）：`C:\Users\Administrator\.dsh\skills` 这个**根目录不能被整体改名/删除**（DSH 进程持有目录监听句柄）。但**不需要再逐技能 Move-Item**：`scripts\bench-before.ps1` 已改为写 Skills Manager 的停用策略（`<DSH_HOME>\skills-manager\state.json` 的 `disabledSkills.dsh`），只改「DSH 看到什么」、不动磁盘文件，运行中的会话也会热刷新（走 `POST /api/dsh-skills-manager/disable`）。不要自己写删除或移目录的逻辑。

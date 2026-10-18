@@ -64,7 +64,7 @@ $ErrorActionPreference = 'Stop'
 $SkillRoot = 'dsh'
 $Skills    = @(
     'forest-hierarchical-backtracking',
-    'formula-pointmass-substitution',
+    'structure-isomorphism-substitution',
     'presupposed-answer-hypothesis-backderivation',
     'web-association-exhaustive'
 )
@@ -312,7 +312,7 @@ function New-RecordSheet {
 
 我的个人技术博客写了三年，现在月访问量 800，AdSense 月收入 5 美元。除了「多写文章」之外，还有哪些可行的增长路径？
 
-### 题面 3（估算 · 公式图）
+### 题面 3（估算 · 结构图）
 
 帮我估算：3 人团队（1 前端、1 后端、1 全栈兼产品），6 个月做一个类似 Notion 的块编辑器 MVP，大概需要多少人日？
 
