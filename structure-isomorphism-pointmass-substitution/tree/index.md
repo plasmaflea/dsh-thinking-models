@@ -17,7 +17,7 @@
 ## 取树的三条路径
 
 1. `<工作区>\structure-tree\index.md`（可选覆盖；**不存在是正常情况**）
-2. `C:\Users\Administrator\.dsh\skills\structure-isomorphism-substitution\tree\index.md`（默认来源）
+2. `C:\Users\Administrator\.dsh\skills\structure-isomorphism-pointmass-substitution\tree\index.md`（默认来源）
 3. 都读不到才降级临时树 v0，且**必须在产物首行挂牌**
 
 ## 节点必备字段（缺一不算节点）

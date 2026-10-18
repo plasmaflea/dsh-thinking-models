@@ -64,7 +64,7 @@ $ErrorActionPreference = 'Stop'
 $SkillRoot = 'dsh'
 $Skills    = @(
     'forest-hierarchical-backtracking',
-    'structure-isomorphism-substitution',
+    'structure-isomorphism-pointmass-substitution',
     'presupposed-answer-hypothesis-backderivation',
     'web-association-exhaustive'
 )

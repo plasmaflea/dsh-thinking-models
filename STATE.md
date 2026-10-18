@@ -13,7 +13,7 @@
 |---|---|---|---|
 | `forest-hierarchical-backtracking` | 林状分层分类回溯法 | 林状图／回溯法 | 作答模式：根因定位，根落在大类上 |
 | `web-association-exhaustive` | 网状线索关联穷举法 | 网状图／穷举法 | 作答模式：穷举与关联映射，默认模式 |
-| `structure-isomorphism-substitution` | 结构同构代入法 | 结构图／代入法 | 作答模式：把陌生问题归到结构模式库的某类，必须校验变量集·边型·边界 |
+| `structure-isomorphism-pointmass-substitution` | 结构同构质点代入法 | 结构图／代入法 | 作答模式：把陌生问题归到结构模式库的某类，必须校验变量集·边型·边界 |
 | `presupposed-answer-hypothesis-backderivation` | 预设答案假设倒推法 | 倒推图／倒推法 | **审计模式**：负面教材，只产出诊断报告，不作答 |
 
 姊妹仓库 `dsh-ordinary-thinking` 存放同一方法的**模拟版**（研究普通人思维本身，不追求正确答案）。
@@ -65,12 +65,12 @@ C:\Users\Administrator\.dsh\skills\<id>\SKILL.md
 ```powershell
 $src = 'D:\DeepSeek-levelup\dsh-thinking-models'
 $dst = "$env:USERPROFILE\.dsh\skills"
-foreach ($id in 'forest-hierarchical-backtracking','web-association-exhaustive','structure-isomorphism-substitution','presupposed-answer-hypothesis-backderivation') {
+foreach ($id in 'forest-hierarchical-backtracking','web-association-exhaustive','structure-isomorphism-pointmass-substitution','presupposed-answer-hypothesis-backderivation') {
   Copy-Item "$src\$id\SKILL.md" "$dst\$id\SKILL.md" -Force
 }
 # 知识树是技能正文的引用目标，必须一起同步
 Copy-Item "$src\forest-hierarchical-backtracking\tree\*" "$dst\forest-hierarchical-backtracking\tree\" -Recurse -Force
-Copy-Item "$src\structure-isomorphism-substitution\tree\*" "$dst\structure-isomorphism-substitution\tree\" -Recurse -Force
+Copy-Item "$src\structure-isomorphism-pointmass-substitution\tree\*" "$dst\structure-isomorphism-pointmass-substitution\tree\" -Recurse -Force
 ```
 
 约束（已验证，2026-10-18 修订）：`C:\Users\Administrator\.dsh\skills` 这个**根目录不能被整体改名/删除**（DSH 进程持有目录监听句柄）。但**不需要再逐技能 Move-Item**：`scripts\bench-before.ps1` 已改为写 Skills Manager 的停用策略（`<DSH_HOME>\skills-manager\state.json` 的 `disabledSkills.dsh`），只改「DSH 看到什么」、不动磁盘文件，运行中的会话也会热刷新（走 `POST /api/dsh-skills-manager/disable`）。不要自己写删除或移目录的逻辑。

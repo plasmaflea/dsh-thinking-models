@@ -12,7 +12,7 @@ Three installable agent skills (SKILL.md format) that turn a vague "think harder
 |---|---|---|---|---|
 | 🌳 林状分层分类回溯法 | **林状图** ／ **回溯法** | `forest-hierarchical-backtracking` | 多根因果林 + 挂起表（含恢复条件） | 「根源在哪」「为什么会出错」「核心是什么」「本质是什么」 |
 | 🕸️ 网状线索关联穷举法 | **网状图** ／ **穷举法** | `web-association-exhaustive` | 带权关联网 ＝ 一张穷举表 | 「有哪些可能」「还有什么没考虑到」「换个角度」 |
-| 📐 结构同构代入法 | **结构图** ／ **代入法** | `structure-isomorphism-substitution` | 结构模式 id + 变量集·边型·边界校验 + 量级区间 | 「预估一下」「帮我推算」「建个模型」「大概多少」「这类问题怎么办」 |
+| 📐 结构同构质点代入法 | **结构图** ／ **代入法** | `structure-isomorphism-pointmass-substitution` | 结构模式 id + 变量集·边型·边界校验 + 量级区间 | 「预估一下」「帮我推算」「建个模型」「大概多少」「这类问题怎么办」 |
 | 🧪 预设答案假设倒推法 | **倒推图** ／ **倒推法** | `presupposed-answer-hypothesis-backderivation` | 假设—证据链 + 走形命中的诊断报告 | 「我是不是先有答案了」「帮我审一下这段推理」「这是不是确认偏误」 |
 
 ### 命名结构
@@ -106,7 +106,7 @@ New-Item -ItemType Directory -Force -Path $dst | Out-Null
 Copy-Item -Recurse -Force `
   .\forest-hierarchical-backtracking, `
   .\web-association-exhaustive, `
-  .\structure-isomorphism-substitution, `
+  .\structure-isomorphism-pointmass-substitution, `
   .\presupposed-answer-hypothesis-backderivation $dst
 ```
 
@@ -130,13 +130,13 @@ npx skills add <owner>/dsh-thinking-models
 .
 ├── forest-hierarchical-backtracking/SKILL.md   # 🌳 林状分层分类回溯法
 ├── web-association-exhaustive/SKILL.md         # 🕸️ 网状线索关联穷举法
-├── structure-isomorphism-substitution/SKILL.md     # 📐 结构同构代入法
+├── structure-isomorphism-pointmass-substitution/SKILL.md     # 📐 结构同构质点代入法
 │   └── tree/                                   # 结构模式库（6 个模式，v1 · 核查 2026-10-19）
 ├── presupposed-answer-hypothesis-backderivation/SKILL.md  # 🧪 预设答案假设倒推法（反面教材）
 ├── examples/                                   # 每个模式一组输入 → 完整产物
 │   ├── forest-hierarchical-backtracking.md
 │   ├── web-association-exhaustive.md
-│   ├── structure-isomorphism-substitution.md
+│   ├── structure-isomorphism-pointmass-substitution.md
 │   └── presupposed-answer-hypothesis-backderivation.md
 ├── docs/                                       # 实验记录与论文流水线
 │   ├── benchmark/README.md                     # 三题面 + 指标定义 + 已跑数据 + 诚实声明

@@ -1,7 +1,7 @@
-# 示例：📐 结构同构代入法（结构图／代入法）
+# 示例：📐 结构同构质点代入法（结构图／代入法）
 
-> 技能 id：`structure-isomorphism-substitution`
-> 结构树 = `multiplicative-rate` · v1 · 核查 2026-10-19 · 路径 `C:\Users\Administrator\.dsh\skills\structure-isomorphism-substitution\tree\multiplicative-rate.md`
+> 技能 id：`structure-isomorphism-pointmass-substitution`
+> 结构树 = `multiplicative-rate` · v1 · 核查 2026-10-19 · 路径 `C:\Users\Administrator\.dsh\skills\structure-isomorphism-pointmass-substitution\tree\multiplicative-rate.md`
 
 **题面**：3 人、6 个月，做 Notion 类的块编辑器 MVP，大概多少人日？先做什么？实时协同要不要一起上？
 

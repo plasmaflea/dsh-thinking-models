@@ -4,13 +4,23 @@
 
 **标签是 2026-10-18 补打的**：本仓库前 18 个提交当时没有打标签，v0.1.0 / v0.2.0 指向的是历史提交（哈希写在下面），v0.3.0 指向当时的 HEAD。历史没有改写。
 
+## [0.7.0] - 2026-10-19（本提交）
+
+### Changed（Breaking）
+- **第三个技能再次改名**：`structure-isomorphism-substitution`（结构同构代入法）→ **`structure-isomorphism-pointmass-substitution`**（**结构同构质点代入法**；简称仍是 **结构图**（产物）／**代入法**（动作））。旧 id 作废，安装位与 DSH 技能仓库需重新扫描。
+- id 段数由 3 个 token 变 4 个，依据是「id 逐词直译中文全称」——与 `presupposed-answer-hypothesis-backderivation`（"预设答案"一段译两词）同例。「同构质点」是一段两词，故 4 token 仍是三段。
+
+### Rationale
+- 四个技能全称字数原先 9／9／9／**7**，第三个独短：核心限定段只剩"同构"一个词，比另三个薄一截。补"质点"后 9／9／9／**9**，段密度对齐。
+- "质点"承重：只写"结构同构"易被读成「长得像就照抄答案」；写明质点，强制那句"先压成单自由度、并声明砍掉了什么"，正是被砍自由度回收判据的入口。
+- 不删 `v0.6.0` 标签、不抹历史：0.6.0 按当时事实保留（仅修正当时写错的 tree 文件清单）。
 ## [0.6.0] - 2026-10-19（本提交）
 
 ### Changed（Breaking）
-- **第三个技能改名**：`formula-pointmass-substitution`（经验公式质点代入法／公式图）→ `structure-isomorphism-substitution`（**结构同构代入法**／**结构图**；动作名「代入法」不变）。旧 id 作废，安装位与 DSH 技能仓库需重新扫描。
+- **第三个技能改名**：`formula-pointmass-substitution`（经验公式质点代入法／公式图）→ `structure-isomorphism-substitution`（**结构同构代入法**／**结构图**；动作名「代入法」不变）。旧 id 作废，安装位与 DSH 技能仓库需重新扫描。（**注：该 id 在 0.7.0 再次改名为 `structure-isomorphism-pointmass-substitution`，本条按当时事实保留。**）
 
 ### Added
-- `structure-isomorphism-substitution/tree/`：**结构模式库 v1**（`index.md` + `software.md` + `operations.md` + `time-series.md` + `supply-chain.md`），每个模式的字段是 结构式／成立条件／变量映射／已知边界／失效点／典型量级。
+- `tree/`：**结构模式库 v1**（`index.md` + `multiplicative-rate` + `additive-budget` + `queue-capacity` + `saturation` + `conservation` + `power-scale`），每个模式的字段是 结构式／成立条件／变量映射／已知边界／失效点／典型量级。
 - SKILL.md 新增五构件：命中模式（id + 出处）／边界包含性（四条判据）／被砍自由度回收判据／回补路径／跨域迁移落点；丢参行为一律进挂起表。
 
 ### Rationale

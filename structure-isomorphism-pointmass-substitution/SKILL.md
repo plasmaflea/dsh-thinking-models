@@ -1,12 +1,12 @@
 ---
-name: structure-isomorphism-substitution
-description: 预测估算、建模推演、结构类比——用户说「预估一下」「帮我推算」「建个模型」「大概多少」「这类问题怎么办」、需要把陌生问题映射到已知结构上估算或复用方案时使用。全称结构同构代入法，简称结构图／代入法：先识别变量集与边型，把问题归到结构模式库里的某个模式，校验边界包含，再质点化代入运算、迭代收敛，并显式声明越界后的退化形态。Use for estimation, modeling, and prediction by structural isomorphism with explicit boundaries.
+name: structure-isomorphism-pointmass-substitution
+description: 预测估算、建模推演、结构类比——用户说「预估一下」「帮我推算」「建个模型」「大概多少」「这类问题怎么办」、需要把陌生问题映射到已知结构上估算或复用方案时使用。全称结构同构质点代入法，简称结构图／代入法：先识别变量集与边型，把问题归到结构模式库里的某个模式，校验边界包含，再质点化代入运算、迭代收敛，并显式声明越界后的退化形态。Use for estimation, modeling, and prediction by structural isomorphism with explicit boundaries.
 ---
 
-# 📐 结构同构代入法
+# 📐 结构同构质点代入法
 
 **简称**：结构图（产物）／代入法（方法）
-**技能 id**：`structure-isomorphism-substitution`＝结构·同构·代入，与全称的三段结构一一对应
+**技能 id**：`structure-isomorphism-pointmass-substitution`＝结构·同构质点·代入，与全称的三段结构一一对应（"同构质点"是一段两词，与 `presupposed-answer` 同例）
 **旧名**：经验公式质点代入法（`formula-pointmass-substitution`，v0.5.0 及以前）——**已于 0.6.0 作废**，旧 id 不再加载
 
 ## 0.1 取结构树（三条路径，按顺序）
@@ -14,7 +14,7 @@ description: 预测估算、建模推演、结构类比——用户说「预估�
 | 序 | 路径 | 说明 |
 |---|---|---|
 | 1 | `<工作区>\structure-tree\index.md` | 可选覆盖。**不存在是正常情况**，不许据此宣布「结构树不存在」 |
-| 2 | `C:\Users\Administrator\.dsh\skills\structure-isomorphism-substitution\tree\index.md` | 默认来源（本机绝对路径）。`<技能目录>` 取 `skill` 工具输出的 `Base directory for this skill:` |
+| 2 | `C:\Users\Administrator\.dsh\skills\structure-isomorphism-pointmass-substitution\tree\index.md` | 默认来源（本机绝对路径）。`<技能目录>` 取 `skill` 工具输出的 `Base directory for this skill:` |
 | 3 | 降级临时树 v0 | 只有前两处都读不到才用；**必须在产物顶部第一行**写 `[⚠️ 结构树未加载：试过 <路径1> ／ <路径2>]` |
 
 ## 0.2 硬规则

@@ -34,7 +34,7 @@ if ($ids.Count -eq 0) {
   $ids = @(
     'forest-hierarchical-backtracking',
     'web-association-exhaustive',
-    'structure-isomorphism-substitution',
+    'structure-isomorphism-pointmass-substitution',
     'presupposed-answer-hypothesis-backderivation'
   )
 }
