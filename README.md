@@ -4,6 +4,8 @@
 
 Three installable agent skills (SKILL.md format) that turn a vague "think harder" into **auditable artifacts**: a causation forest, a weighted association web, and a formula with declared boundaries. A fourth skill is a deliberate **anti-pattern**: it audits an answer for presupposed-answer backtracking before delivery.
 
+> **当前版本 v0.3.0**（`VERSION` / `v0.3.0` 标签）。接手、改、验、发的完整流程见 [STATE.md](STATE.md)；变更历史见 [CHANGELOG.md](CHANGELOG.md)。
+>
 > 这套方法从哪来、为什么坚持先画结构再下结论——见文末 [后记](#后记这套方法是怎么来的)。
 
 | 全称 | 简称（产物／动作） | 技能 id | 产物 | 触发 |
