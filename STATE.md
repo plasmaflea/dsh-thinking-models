@@ -44,7 +44,7 @@ docs/benchmark/rubric-v4.md       v4 评分口径（10 项判定）
 docs/benchmark/prompts-v2.md      四道定稿题面
 docs/benchmark/after-v2/ after-v4/ before-web-v2/ before-dsh-v2/
 docs/paper/pipeline.md            25 阶段论文流水线映射
-scripts/bench-before.ps1 + .cmd   对照组环境开关（撤技能 + 撤 AGENTS.md，可逆）
+scripts/bench-before.ps1 + .cmd   对照组环境开关（Skills Manager 停用策略 + 撤 AGENTS.md，可逆）
 scripts/bench-measure.ps1 + .cmd  产物实测（行/字符/表格/章节/负边）
 scripts/state.ps1 + .cmd          本文件的机器版：打印真实仓库与安装位状态
 README.md CHANGELOG.md VERSION STATE.md LICENSE
@@ -70,7 +70,9 @@ foreach ($id in 'forest-hierarchical-backtracking','web-association-exhaustive',
 Copy-Item "$src\forest-hierarchical-backtracking\tree\*" "$dst\forest-hierarchical-backtracking\tree\" -Recurse -Force
 ```
 
-约束（已验证）：`C:\Users\Administrator\.dsh\skills` 这个**根目录不能被整体改名/删除**（DSH 进程持有目录监听句柄），要停用技能必须**逐技能 Move-Item**；`scripts\bench-before.ps1` 就是干这个的，不要自己写删除逻辑。
+约束（已验证，2026-10-18 修订）：`C:\Users\Administrator\.dsh\skills` 这个**根目录不能被整体改名/删除**（DSH 进程持有目录监听句柄）。但**不需要再逐技能 Move-Item**：`scripts\bench-before.ps1` 已改为写 Skills Manager 的停用策略（`<DSH_HOME>\skills-manager\state.json` 的 `disabledSkills.dsh`），只改「DSH 看到什么」、不动磁盘文件，运行中的会话也会热刷新（走 `POST /api/dsh-skills-manager/disable`）。不要自己写删除或移目录的逻辑。
+
+⚠️ 写这份策略文件时**不要用 `ConvertTo-Json` 直接序列化有序字典**：PowerShell 5.1 会把空数组写成 `{}`，插件 `validManagerStateDocument()` 判非法 ⇒ 接口回 400、技能目录静默失效。脚本里是手工拼 JSON 的，改动时保持这一点。
 
 ## 5. 改一个技能的完整流程
 

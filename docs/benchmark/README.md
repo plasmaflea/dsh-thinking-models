@@ -92,11 +92,17 @@
 ### before 侧跑法（已验证可用）
 
 ```powershell
-D:\DeepSeek-levelup\dsh-thinking-models\scripts\bench-before.cmd            # 武装（移走技能 + 撤 AGENTS.md，可逆）
+D:\DeepSeek-levelup\dsh-thinking-models\scripts\bench-before.cmd            # 武装（停用策略 + 撤 AGENTS.md，可逆）
 dsh --profile web --port 19388 --no-open                                   # 另起一台干净服务器（不是 `dsh web`）
-# 浏览器开 19388，四题各开新会话，逐字贴 prompts-v2.md 的四段
+# 浏览器开 19388，逐题开新会话，逐字贴 prompts-v2.md 的题面
 D:\DeepSeek-levelup\dsh-thinking-models\scripts\bench-before.cmd -Restore   # 恢复
 ```
+
+武装的机制（2026-10-18 改为策略开关，不再移目录）：写 `<DSH_HOME>\skills-manager\state.json` 的
+`disabledSkills.dsh = [4 个思考类技能]`，再用 `POST /api/dsh-skills-manager/disable` 让运行中的服务器
+热刷新目录。**实测：停用后 `available_skills` 立刻只剩内置技能**（office-× 3 + diagnose-windows-sandbox-acl
++ hindsight-coding-agent）；恢复后 9 个全部回来。关不掉的那 4 个内置技能来自 DSH runtime，不在
+`state.json` 的任何源里——这是「裸机」的真实边界，必须写进实验记录。
 
 四条铁律：**逐字贴**、**每题新会话**、**贴完不追加任何引导**、**四题跑完再统一回填**。
 

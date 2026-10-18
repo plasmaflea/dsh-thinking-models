@@ -4,6 +4,21 @@
 
 **标签是 2026-10-18 补打的**：本仓库前 18 个提交当时没有打标签，v0.1.0 / v0.2.0 指向的是历史提交（哈希写在下面），v0.3.0 指向当时的 HEAD。历史没有改写。
 
+## [0.4.1] - 2026-10-18（本提交）
+
+### Changed
+- **对照组开关改为 Skills Manager 停用策略**（`scripts\bench-before.ps1` 重写）。旧版把 `~/.dsh/skills` 下每个技能目录 `Move-Item` 到 `skills.off\`；新版只写 `<DSH_HOME>\skills-manager\state.json` 的 `disabledSkills.dsh`，不动磁盘文件，也不再受「skills 根目录被 DSH 监听句柄占住、无法整体改名」的约束。给了 `-Port` 就顺带调 `POST /api/dsh-skills-manager/{disable,enable}`，让**运行中**的服务器热刷新技能目录。
+- 记录单（`bench-before-record-<时间戳>.md`）从 4 题扩到 5 题，新增题面 5（证据不足、多嫌疑不可分离）与「是否声明无法辨识」一行。
+
+### Verified（实测，非推断）
+- 停用 4 个思考类技能后，当前会话的 `available_skills` **立刻**只剩 5 个（office-docx/pptx/xlsx + diagnose-windows-sandbox-acl + hindsight-coding-agent）；`-Restore` 后 9 个全部回来。两个方向都验过。
+- 不带 `-Port` 的纯文件路径同样有效：`state.json` 写完后 `disabledSkills.dsh` 有 4 项、其余源为 `[]`，新进程启动即按此策略构建目录。
+- 关不掉的边界：office-× 3 与 diagnose-windows-sandbox-acl 来自 DSH 内置 runtime，不在 `state.json` 的任何源里；hindsight-coding-agent 属 `agents` 源，需 `-AlsoAgents`。
+
+### 修掉的两个自身 bug
+- **`ConvertTo-Json` 把空数组写成 `{}`**：PowerShell 5.1 序列化有序字典时，`@()` 会变成 `{}`，插件 `validManagerStateDocument()` 判文档非法 ⇒ 接口一律回 400、技能目录静默失效。改为手工拼 JSON，并在落盘前用正则确认每个源的值都以 `[` 开头。
+- **写前自检误判单元素数组**：`ConvertFrom-Json` 会把单元素数组解包成字符串，最初的类型检查因此误报。已放宽为「字符串或数组都合法，只拒绝 PSCustomObject」。
+
 ## [0.4.0] - 2026-10-18（本提交）
 
 ### Changed
