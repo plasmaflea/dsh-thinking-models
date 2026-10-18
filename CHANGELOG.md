@@ -18,6 +18,7 @@
 - `forest-hierarchical-backtracking/SKILL.md`：**§6.1 消解根落在哪一层**——类根/因果链属事实层，处置根/消解根属处置层。
 - `web-association-exhaustive/SKILL.md`：新增「立场：并列全列，不锁一个」；穷举表固定列与输出骨架加**持有者**列。
 - `presupposed-answer-hypothesis-backderivation/SKILL.md`：新增「守 is–ought 线：查 `G` 是否被偷换」。
+- `structure-isomorphism-pointmass-substitution/tree/`：结构模式库由 **v1**（6 个「量」结构）升到 **v2.4**（12 基＝量六＋质六，2 修饰，3 组合规则，复合表，先例检索），12 个节点与索引同目录；索引内写死的安装位绝对路径 `C:\Users\...` 改为相对文件名——此前别的机器上必然断链。`README.md` 的仓库结构同步更新。
 
 ## [0.7.0] - 2026-10-19（本提交）
 

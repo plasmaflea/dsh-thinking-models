@@ -131,7 +131,7 @@ npx skills add <owner>/dsh-thinking-models
 ├── forest-hierarchical-backtracking/SKILL.md   # 🌳 林状分层分类回溯法
 ├── web-association-exhaustive/SKILL.md         # 🕸️ 网状线索关联穷举法
 ├── structure-isomorphism-pointmass-substitution/SKILL.md     # 📐 结构同构质点代入法
-│   └── tree/                                   # 结构模式库（6 个模式，v1 · 核查 2026-10-19）
+│   └── tree/                                   # 结构模式库（12 基 + 2 修饰 + 复合表，v2.4 · 核查 2026-10-18）
 ├── presupposed-answer-hypothesis-backderivation/SKILL.md  # 🧪 预设答案假设倒推法（反面教材）
 ├── examples/                                   # 每个模式一组输入 → 完整产物
 │   ├── forest-hierarchical-backtracking.md
