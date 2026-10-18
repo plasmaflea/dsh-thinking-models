@@ -320,3 +320,7 @@ v4 把「根」从个例上移到大类（L0 类别判定 → L1 知识树 → L
 .\scripts\bench-before.cmd -Status
 .\scripts\bench-before.cmd -Restore
 ```
+
+## T5：技能 vs 裸机的 A/B 对照（2026-10-18）
+
+结论：**技能不改变结论方向，只改变记账方式** —— 两组都把 v3.4 串行化定为主因；B 组体量 2.4×、表格行 4.6×、排除项 3→16（区间不重叠），但「声明不可辨识」仅 1/5 → 3/5，未达预注册阈值。完整报告见 [t5/results.md](t5/results.md)，十份原文在 [t5/](t5/)，预注册口径在 [t5/rubric-preregistered.md](t5/rubric-preregistered.md)。
