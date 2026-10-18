@@ -338,7 +338,7 @@ v4 把「根」从个例上移到大类（L0 类别判定 → L1 知识树 → L
 
 无法再测的：纯文本题的天花板已明确——再出同类题只会得到同质化证据。唯一能给真值的注入题 T6 见下节。
 
-## T6：三真根并列 + 技能 vs 无技能（2026-10-19，v0.5.0）
+## T6：三真根并列 + 技能 vs 无技能（2026-10-18，v0.5.0）
 
 题面与环境见 [runs/T6/prompts.md](runs/T6/prompts.md)，结果见 [runs/T6/results.md](runs/T6/results.md)，预注册口径在 [runs/T6/rubric-preregistered.md](runs/T6/rubric-preregistered.md)，10 份原文在 [runs/T6/outputs/](runs/T6/outputs/)。
 
