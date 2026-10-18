@@ -4,6 +4,16 @@
 
 **标签是 2026-10-18 补打的**：本仓库前 18 个提交当时没有打标签，v0.1.0 / v0.2.0 指向的是历史提交（哈希写在下面），v0.3.0 指向当时的 HEAD。历史没有改写。
 
+## [0.3.2] - 2026-10-18（本提交）
+
+### Added
+- `docs/benchmark/injection-sxs.md`：用 `csc /win32manifest` 做**真实注入**，证明 SxS／清单失败是 `CreateProcess` 失败（Win32 14001 = `0x36B1`）、进程根本不会被创建，与 `0xC0000142` 分属不同层；追加实测还推翻了旧题面「日志全空」的前提——真实注入会产生 `SideBySide` 源 Event 33，并把缺失的 identity 五个字段直接印出来
+- `docs/benchmark/rubric-g3alt.md`：跑前定死的八因子 + 两个主指标（**分水岭命中** F2 ／ **误并家族**）
+- `docs/benchmark/g3alt-results.md` 与 `docs/benchmark/after-g3alt/`：n=5 盲跑，5/5 命中分水岭、0/5 误并 `0xC0000142` 家族、均分 7.8/8
+
+### Changed
+- **评分口径更正**：8 因子表中的「⑦ SxS 配置错误」不能直接产生 `0xC0000142`。剔掉 ⑦ 后 v2／v3／裸机的真因覆盖率为 6/7、7/7、7/7——旧 8 因子分母不可再用，论文须如实写明
+- `docs/benchmark/stress.md` 的 G3 已执行并改写为 G3-alt（SxS 题面）
 ## [0.3.1] - 2026-10-18（`c7bdffd`）
 
 ### Added

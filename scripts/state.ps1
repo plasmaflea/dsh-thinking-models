@@ -6,6 +6,7 @@
     .\scripts\state.cmd                  # overview
     .\scripts\state.cmd -Verify          # overview + exit 1 if repo != installed
     .\scripts\state.cmd -Repo <path>     # point at another repo (e.g. dsh-ordinary-thinking)
+    .\scripts\state.cmd -Verify -RequireInstalled   # also fail when a skill is not installed at all
 
   Why a .cmd wrapper: this machine forbids running .ps1 directly (execution policy),
   so always invoke state.cmd, never state.ps1.
@@ -13,7 +14,8 @@
 [CmdletBinding()]
 param(
   [string]$Repo = 'D:\DeepSeek-levelup\dsh-thinking-models',
-  [switch]$Verify
+  [switch]$Verify,
+  [switch]$RequireInstalled
 )
 
 $ErrorActionPreference = 'Stop'
@@ -81,9 +83,11 @@ foreach ($id in $ids) {
   if (-not (Test-Path -LiteralPath $rp)) { continue }
   $rh = Hash12 $rp
   $ih = Hash12 $ip
-  if ($rh -ne $ih) { $bad++ }
-  $mark = if ($rh -eq $ih) { 'OK  ' } else { 'DIFF' }
-  $color = if ($rh -eq $ih) { 'Gray' } else { 'Red' }
+  # NONE = 该技能没有装进 DSH（例如另一个仓库的模拟版技能，故意不装）
+  $mark = if ($ih -eq '(missing)') { 'NONE' } elseif ($rh -eq $ih) { 'OK  ' } else { 'DIFF' }
+  if ($mark -eq 'DIFF') { $bad++ }
+  if ($mark -eq 'NONE' -and $RequireInstalled) { $bad++ }
+  $color = switch ($mark) { 'OK  ' { 'Gray' } 'DIFF' { 'Red' } default { 'Yellow' } }
   Write-Host ('{0} {1,-46} repo={2} installed={3}' -f $mark, $id, $rh, $ih) -ForegroundColor $color
 }
 
