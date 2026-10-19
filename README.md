@@ -129,7 +129,9 @@ npx skills add <owner>/dsh-thinking-models
 ```
 .
 ├── forest-hierarchical-backtracking/SKILL.md   # 🌳 林状分层分类回溯法
+│   └── tree/                                   # 认知树（v1）：software / win-service 节点
 ├── web-association-exhaustive/SKILL.md         # 🕸️ 网状线索关联穷举法
+│   └── tree/                                   # 关系表（v1）：九类关系 + 秩矩阵 + 校准记录
 ├── structure-isomorphism-pointmass-substitution/SKILL.md     # 📐 结构同构质点代入法
 │   └── tree/                                   # 结构模式库（12 基 + 2 修饰 + 复合表，v2.4 · 核查 2026-10-18）
 ├── presupposed-answer-hypothesis-backderivation/SKILL.md  # 🧪 预设答案假设倒推法（反面教材）
@@ -149,6 +151,8 @@ npx skills add <owner>/dsh-thinking-models
 ```
 
 技能目录直接放在仓库根下，便于各家的技能扫描器发现；不要再往深层套子目录。
+
+`<id>/tree/` 三份都是**生成副本**，真相源在独立仓库 [`dsh-thinking-models-constants`](https://github.com/plasmaflea/dsh-thinking-models-constants)（认知树 / 关系表 / 结构表，各自带 `vN` 与核查日期）。副本不要就地改：改常量库，再跑它的 `scripts/sync.cmd` 同步到本仓库与本机安装位，`state.cmd -Verify` 会报漂移。
 
 ---
 

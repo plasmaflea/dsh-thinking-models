@@ -18,6 +18,8 @@
 
 姊妹仓库 `dsh-ordinary-thinking` 存放同一方法的**模拟版**（研究普通人思维本身，不追求正确答案）。
 
+**常量库已独立**：认知树（forest）／关系表（web）／结构表（structure）的真相源在 [dsh-thinking-models-constants](https://github.com/plasmaflea/dsh-thinking-models-constants)。本仓库 `<id>/tree/` 与安装位 `tree/` 都是它的生成副本，**只读**。
+
 ## 2. 上传信息（发布目标）
 
 | 项 | 值 |
@@ -26,7 +28,7 @@
 | 远端 | `https://github.com/plasmaflea/dsh-thinking-models.git`（origin） |
 | 可见性 | PUBLIC（Skills Manager 只扫公开仓库） |
 | 默认分支 | `main` |
-| 当前版本 | 见 `VERSION`（0.9.0）／标签 `v0.9.0` |
+| 当前版本 | 见 `VERSION`（0.9.1）／标签 `v0.9.1` |
 | topics | ai-agents, estimation, llm, prompt-engineering, reasoning, root-cause-analysis, skills |
 | 账号 | GitHub `plasmaflea`；`gh` CLI 已登录（scope: `gist, read:org, repo`） |
 | git 身份 | `plasmablue <1935153750@qq.com>` |
@@ -38,6 +40,9 @@
 forest-.../tree/index.md          常量知识树索引（先读这个）
 forest-.../tree/software.md       软件大类树（六层：concurrency/quota/init/config/dependency/lifecycle）
 forest-.../tree/win-service.md    Windows 服务子类树
+web-.../tree/index.md             关系表索引（九类关系 + 秩矩阵 + 校准记录）
+web-.../tree/relations.md         九类关系、远近步数、秩矩阵、两条硬规则
+web-.../tree/calibration.md       校准记录：实例模板、冲突裁决史
 structure-.../tree/index.md       结构模式库索引（12 基 + 2 修饰 + 复合表，v2.4）
 structure-.../tree/{multiplicative-rate,conservation,saturation,power-scale,additive-budget,queue-capacity,feedback-loop,threshold-switch,adversarial-game,signal-inference,series-reliability,search-landscape}.md
 examples/<id>.md              ×4  每个技能一份完整样例（改动时要同步）
@@ -58,9 +63,17 @@ README.md CHANGELOG.md VERSION STATE.md LICENSE
 C:\Users\Administrator\.dsh\skills\<id>\SKILL.md
 ```
 
-**仓库与安装位是两份拷贝**，必须保持一致：只改仓库，技能目录跑的还是旧版；只改安装位，推送会上丢。唯一的真相源是仓库。
+**仓库与安装位是两份拷贝**，必须保持一致：只改仓库，技能目录跑的还是旧版；只改安装位，推送会上丢。**真相源分两级**：常量（树／关系表／结构表）＝`dsh-thinking-models-constants`，四份 `SKILL.md` 与示例＝本仓库。
 
-同步（PowerShell）：
+常量三库同步（一条命令，覆盖本仓库 `<id>/tree/` 与安装位 `<id>/tree/`）：
+
+```powershell
+cd D:\DeepSeek-levelup\dsh-thinking-models-constants
+.\scripts\sync.cmd            # 三库 → 两个消费方
+.\scripts\sync.cmd -Check     # 只比对，有漂移 exit 1
+```
+
+`SKILL.md` 与示例仍只在本仓库改，改完手工同步到安装位：
 
 ```powershell
 $src = 'D:\DeepSeek-levelup\dsh-thinking-models'
@@ -68,9 +81,6 @@ $dst = "$env:USERPROFILE\.dsh\skills"
 foreach ($id in 'forest-hierarchical-backtracking','web-association-exhaustive','structure-isomorphism-pointmass-substitution','presupposed-answer-hypothesis-backderivation') {
   Copy-Item "$src\$id\SKILL.md" "$dst\$id\SKILL.md" -Force
 }
-# 知识树是技能正文的引用目标，必须一起同步
-Copy-Item "$src\forest-hierarchical-backtracking\tree\*" "$dst\forest-hierarchical-backtracking\tree\" -Recurse -Force
-Copy-Item "$src\structure-isomorphism-pointmass-substitution\tree\*" "$dst\structure-isomorphism-pointmass-substitution\tree\" -Recurse -Force
 ```
 
 约束（已验证，2026-10-18 修订）：`C:\Users\Administrator\.dsh\skills` 这个**根目录不能被整体改名/删除**（DSH 进程持有目录监听句柄）。但**不需要再逐技能 Move-Item**：`scripts\bench-before.ps1` 已改为写 Skills Manager 的停用策略（`<DSH_HOME>\skills-manager\state.json` 的 `disabledSkills.dsh`），只改「DSH 看到什么」、不动磁盘文件，运行中的会话也会热刷新（走 `POST /api/dsh-skills-manager/disable`）。不要自己写删除或移目录的逻辑。
@@ -84,11 +94,14 @@ Copy-Item "$src\structure-isomorphism-pointmass-substitution\tree\*" "$dst\struc
 cd D:\DeepSeek-levelup\dsh-thinking-models
 .\scripts\state.cmd
 
-# 1 改仓库里的文件（先改仓库）
-#    SKILL.md / examples/<id>.md / tree/*.md / README / AGENTS 对应条目
-#    改了树 → 必须升节点 vN 并更新「核查 日期」
+# 1 改文件（先改仓库）
+#    SKILL.md / examples/<id>.md / README / AGENTS 对应条目 → 本仓库
+#    树 / 关系表 / 结构表 → 常量库 dsh-thinking-models-constants（本仓库 tree/ 是副本，只读）
+#    改常量 → 在常量库升节点 vN 并更新「核查 日期」
 
-# 2 同步到本机安装位（见第 4 节命令）
+# 2 同步
+cd D:\DeepSeek-levelup\dsh-thinking-models-constants; .\scripts\sync.cmd   # 常量三库
+#    再按第 4 节手工同步 4 份 SKILL.md（示例文件随仓库分发，安装位不需要）
 
 # 3 验证
 .\scripts\state.cmd -Verify     # 仓库 ↔ 安装位 哈希是否一致 + 树版本
@@ -121,6 +134,7 @@ git push; git push --tags
 5. 挂起表四列（分支／判定／依据／**恢复条件**），禁止用删除代替挂起。
 6. 测量脚本必须显式 UTF-8：PowerShell 5.1 的 `Get-Content` 按 GBK 解码 UTF-8 中文会少数行（同一份 200 行文件被数成 144 行）。
 7. 本机执行策略禁止直跑 `.ps1`，一律走配套 `.cmd`（内部 `-ExecutionPolicy Bypass`）；`.cmd` 内容必须是纯 ASCII + CRLF，否则 cmd 按 GBK 解析中文注释会报错。
+8. **常量只在常量库改**：`<id>/tree/` 是 `dsh-thinking-models-constants` 的生成副本，就地改会被下一次 `sync.cmd` 覆盖；发现副本与库不一致，先跑 `sync.cmd -Check` 定位漂移，不要手工改副本。
 
 ## 8. 已知待办
 
@@ -131,4 +145,4 @@ git push; git push --tags
 
 ## 9. 跨会话检索
 
-稳定事实（仓库地址、版本、约束）已用 `hindsight_ingest_document` 落库；查历史对话用 `conversation_search`，读原文用 `conversation_history`。
+稳定事实（仓库地址、版本、约束）已用 `hindsight_ingest_document` 落库；查历史对话用 `conversation_search`，读原文用 `conversation_history`。常量库地址：`https://github.com/plasmaflea/dsh-thinking-models-constants`。

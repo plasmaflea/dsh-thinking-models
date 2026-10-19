@@ -4,6 +4,21 @@
 
 **标签是 2026-10-18 补打的**：本仓库前 18 个提交当时没有打标签，v0.1.0 / v0.2.0 指向的是历史提交（哈希写在下面），v0.3.0 指向当时的 HEAD。历史没有改写。
 
+## [0.9.1] - 2026-10-19
+
+### Added
+- **常量层独立成库**：[`dsh-thinking-models-constants`](https://github.com/plasmaflea/dsh-thinking-models-constants) v1.0.0——认知树（v1，3 节点）／关系表（v1，新建）／结构表（v2.4，13 文件），各带 `vN` 与核查日期；配 `scripts/sync.cmd`（三库 → 本仓库 `tree/` + 安装位，`-Check` 只比对）与 `scripts/state.cmd`（仓库／库／副本三方体检）。
+- `web-association-exhaustive/tree/`：**关系表常量**（九类关系、远近步数、秩矩阵、两条硬规则、校准记录模板）。此前网状图是三张图里唯一没有常量表的。
+- `web-association-exhaustive/SKILL.md` §2.1 末：指向常量库 `tree/relations.md`，声明「与库冲突以库为准，改表去改库」。
+- `AGENTS.md` 新增规则 18「常量库是唯一真相源」；规则 11、15 的取树路径加 ⓪ 常量库。
+
+### Changed
+- `README.md` 仓库结构：补 `forest tree/`、`web tree/` 两行，并写明「`<id>/tree/` 是副本、真相源在常量库、改常量跑 sync.cmd」。
+- `STATE.md`：真相源分两级（常量库／本仓库）；同步命令改为 `sync.cmd` + 手工 SKILL.md；改流程第 1–2 步与约束第 8 条同步。
+
+### Fixed
+- 常量库 `scripts/state.cmd -Verify` 的版本行取错（取到用法说明那一行）——改为锚定 `版本**：`。
+
 ## [0.9.0] - 2026-10-19
 
 ### Added
