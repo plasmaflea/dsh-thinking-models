@@ -164,7 +164,8 @@ cd dsh-thinking-models-constants
 │   └── paper/pipeline.md                       # 论文阶段与本项目的映射
 ├── scripts/
 │   ├── bench-before.ps1 / bench-before.cmd     # 对照组环境开关（停用策略 + 撤 AGENTS.md，可逆）
-│   └── sync-tree.ps1                           # 结构库同步：工作区源 → 仓库 tree/ → 安装位（-Check 可做提交前检查）
+│   ├── sync-tree.ps1                           # 结构库同步：工作区源 → 仓库 tree/ → 安装位（-Check 可做提交前检查）
+│   └── verify-install.ps1 / verify-install.cmd # 空房校验：从远端 clone → 与本机安装位逐字节比对（-Ref 可验某个标签）
 ├── README.md
 └── LICENSE
 ```

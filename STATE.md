@@ -28,7 +28,7 @@
 | 远端 | `https://github.com/plasmaflea/dsh-thinking-models.git`（origin） |
 | 可见性 | PUBLIC（Skills Manager 只扫公开仓库） |
 | 默认分支 | `main` |
-| 当前版本 | 见 `VERSION`（0.9.2）／标签 `v0.9.2` |
+| 当前版本 | 见 `VERSION`（0.9.3）／标签 `v0.9.3` |
 | topics | ai-agents, estimation, llm, prompt-engineering, reasoning, root-cause-analysis, skills |
 | 账号 | GitHub `plasmaflea`；`gh` CLI 已登录（scope: `gist, read:org, repo`） |
 | git 身份 | `plasmablue <1935153750@qq.com>` |
@@ -54,6 +54,7 @@ docs/paper/pipeline.md            25 阶段论文流水线映射
 scripts/bench-before.ps1 + .cmd   对照组环境开关（Skills Manager 停用策略 + 撤 AGENTS.md，可逆）
 scripts/bench-measure.ps1 + .cmd  产物实测（行/字符/表格/章节/负边）
 scripts/state.ps1 + .cmd          本文件的机器版：打印真实仓库与安装位状态
+scripts/verify-install.ps1 + .cmd 空房校验：远端 clone ↔ 本机安装位逐字节比对（-Ref 校验标签）
 README.md CHANGELOG.md VERSION STATE.md LICENSE
 ```
 
@@ -104,7 +105,9 @@ cd D:\DeepSeek-levelup\dsh-thinking-models-constants; .\scripts\sync.cmd   # 常
 #    再按第 4 节手工同步 4 份 SKILL.md（示例文件随仓库分发，安装位不需要）
 
 # 3 验证
-.\scripts\state.cmd -Verify     # 仓库 ↔ 安装位 哈希是否一致 + 树版本
+.\scripts\state.cmd -Verify              # 仓库 ↔ 安装位 哈希是否一致 + 树版本
+.\scripts\verify-install.cmd             # 空房校验：远端默认分支装出来的是否与本机逐字节一致
+.\scripts\verify-install.cmd -Ref v0.9.3 # 打标签后复核该标签（发版后的最后一道）
 
 # 4 更新 CHANGELOG.md（Added/Changed/Removed/Breaking）+ VERSION
 
