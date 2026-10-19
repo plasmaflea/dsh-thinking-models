@@ -14,7 +14,7 @@ description: 预测估算、建模推演、结构类比——用户说「预估�
 | 序 | 路径 | 说明 |
 |---|---|---|
 | 1 | `<工作区>\structure-tree\index.md` | 可选覆盖。**不存在是正常情况**，不许据此宣布「结构树不存在」 |
-| 2 | `C:\Users\Administrator\.dsh\skills\structure-isomorphism-pointmass-substitution\tree\index.md` | 默认来源（本机绝对路径）。`<技能目录>` 取 `skill` 工具输出的 `Base directory for this skill:` |
+| 2 | `<技能目录>\tree\index.md` | 默认来源（`tree/` 随技能一起安装，随安装落盘）。`<技能目录>` 取 `skill` 工具输出的 `Base directory for this skill:`，**用它拼路径，不要照抄示例里的绝对路径** |
 | 3 | 降级临时树 v0 | 只有前两处都读不到才用；**必须在产物顶部第一行**写 `[⚠️ 结构树未加载：试过 <路径1> ／ <路径2>]` |
 
 ## 0.2 硬规则

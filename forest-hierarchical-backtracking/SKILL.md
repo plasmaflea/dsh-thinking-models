@@ -26,7 +26,7 @@ description: 定位根源与故障排查——用户问「根源在哪」「为�
 | 序 | 路径 | 说明 |
 |---|---|---|
 | 1 | `<工作区>\knowledge-tree\index.md` | **工作区覆盖树。它不存在是正常情况，不构成「知识树不存在」**——直接进第 2 条，不许因此宣布树缺失 |
-| 2 | `<技能目录>\tree\index.md` | **默认来源**。`<技能目录>` 取 `skill` 工具输出里 `Base directory for this skill:` 的值；本机安装位为 `C:\Users\Administrator\.dsh\skills\forest-hierarchical-backtracking`，即可直接读 `C:\Users\Administrator\.dsh\skills\forest-hierarchical-backtracking\tree\index.md` |
+| 2 | `<技能目录>\tree\index.md` | **默认来源**。`<技能目录>` 取 `skill` 工具输出里 `Base directory for this skill:` 的值，**用它拼路径，不要照抄任何示例中的绝对路径**。`tree/` 随技能一起安装（Skills Manager 按仓库清单逐文件落盘），所以第 2 条在装好的机器上总该读得到 |
 | 3 | 以上两条都读不到 | 降级为临时树 v0，并**必须在产物顶部第一行**写 `[⚠️ 知识树未加载：试过 <路径1> ／ <路径2>]` |
 
 ### 0.2 硬规则（这一条是为了修一次实测缺陷：5 个执行体里有 2 个加载失败并静默降级）

@@ -4,6 +4,15 @@
 
 **标签是 2026-10-18 补打的**：本仓库前 18 个提交当时没有打标签，v0.1.0 / v0.2.0 指向的是历史提交（哈希写在下面），v0.3.0 指向当时的 HEAD。历史没有改写。
 
+## [0.9.2] - 2026-10-19
+
+### Changed
+- **取树路径去机器化**：`forest-hierarchical-backtracking/SKILL.md` §0.1 第 2 条与 `structure-isomorphism-pointmass-substitution/SKILL.md` §0.1 第 2 条，不再把 `C:\Users\Administrator\...` 当作默认路径示例，改为「`<技能目录>` 取 `skill` 工具输出的 `Base directory for this skill:`，**用它拼路径，不要照抄示例**」。外部读者不再看到别人机器上的绝对路径。
+- **README 安装节**补一句：`tree/` 随技能目录一起安装，装技能即拿到三张图的常量表，**不需要另装常量库**；并新增「5. 常量库（只有要改表的人才需要）」，给出 clone + `sync.cmd` / `state.cmd -Verify` 用法与「副本只读」的方向说明。
+
+### Notes
+- 配套：常量库 [`dsh-thinking-models-constants`](https://github.com/plasmaflea/dsh-thinking-models-constants) 1.0.1（脚本去掉写死的本机路径、`state.cmd` 版本行修复）。两个仓库各自打标签，互不依赖。
+
 ## [0.9.1] - 2026-10-19
 
 ### Added

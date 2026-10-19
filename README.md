@@ -80,6 +80,8 @@ Three installable agent skills (SKILL.md format) that turn a vague "think harder
 
 技能没有中心化商店，分发单位就是一个目录 + 一份 `SKILL.md`。下面四种装法任选。
 
+> **`tree/` 随技能一起装**：三张图的常量表（认知树／关系表／结构表）就在各自技能目录的 `tree/` 下，装技能即拿到，**不需要再装任何常量库**。常量库只给要改这些表的人用，见第 5 节。
+
 ### 1. DSH 技能仓库（推荐）
 
 DeepSeek Harness + [Skills Manager](https://github.com/MichengAI/dsh-skills-manager) 插件：
@@ -121,6 +123,23 @@ npx skills add <owner>/dsh-thinking-models
 ### 4. 直接用
 
 技能正文就是普通 Markdown。不想装，也可以把对应 `SKILL.md` 的内容贴进系统提示词，效果等同（代价是每一轮都占上下文）。
+
+### 5. 常量库（只有要改表的人才需要，装技能不需要）
+
+三张图的背景知识——认知树、关系类型表、结构模式库——单独维护在 [`dsh-thinking-models-constants`](https://github.com/plasmaflea/dsh-thinking-models-constants)。
+
+**用技能的人不用碰它**：`tree/` 已随每个技能目录发布，上面四种装法都会把整个目录拷过去。只有在你要**改这些表**（加节点、改判据、记校准）时才 clone：
+
+```powershell
+git clone https://github.com/plasmaflea/dsh-thinking-models-constants
+cd dsh-thinking-models-constants
+.\scripts\sync.cmd  -SkillsRepo <你的本仓库路径> -InstallDir <你的技能安装目录>
+.\scripts\state.cmd -Verify -SkillsRepo <你的本仓库路径> -InstallDir <你的技能安装目录>
+```
+
+（两个仓库 clone 在同一父目录时，`-SkillsRepo` 可省略，脚本会自动发现。）
+
+方向是单向的：常量库是真相源，**本仓库的 `tree/` 是生成副本**，就地改会在下次同步时被覆盖。改法、升版规则、不变量见常量库的 `README.md`。
 
 ---
 
