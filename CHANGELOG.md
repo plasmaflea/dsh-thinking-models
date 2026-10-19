@@ -4,6 +4,15 @@
 
 **标签是 2026-10-18 补打的**：本仓库前 18 个提交当时没有打标签，v0.1.0 / v0.2.0 指向的是历史提交（哈希写在下面），v0.3.0 指向当时的 HEAD。历史没有改写。
 
+## [0.10.1] - 2026-10-20
+
+### Changed
+- **退役 `scripts/sync-tree.ps1`**（删文件）。它的源路径是工作区 `structure-tree/`（`$source = Join-Path $wsRoot 'structure-tree'`），而真相源早已迁到常量库 `dsh-thinking-models-constants`，由那边的 `scripts/sync.cmd` 统一把三库同步到「技能仓库 + 安装位」两个目标。留着它 = 一条指向旧源的活路径，而且它会阻止删掉工作区那份逐字节相同的旧副本。同步摘掉 `README` 结构图里那一行；历史条目不改写。
+- **`bench-before.ps1` 记录单改落 `archive\<yyyyMMdd>-bench-before\`**（新增 `-OutRoot` 可覆盖），落实约定「实验产物一律进 `archive/<日期>-<实验名>/`」。此前它每次运行都往工作区根目录写 `bench-before-record-<时间戳>.md`，根目录的堆积主要来自这里。
+
+### Notes
+- 配套的工作区清理（2026-10-20）：删 `structure-tree/`（与常量库 `structure-tree/` 逐字节相同的旧副本）、`runs-staging*/`、`lab-t*`、`sxs-lab/`、`experiments/`、根目录三份 `bench-before-record-*.md`、`.dshhelp*`、`.dsh-conversation-manager/`。约定同时写进工作区 `AGENTS.md`。
+
 ## [0.10.0] - 2026-10-19
 
 ### Added

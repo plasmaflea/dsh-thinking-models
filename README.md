@@ -163,8 +163,7 @@ cd dsh-thinking-models-constants
 │   ├── benchmark/README.md                     # 三题面 + 指标定义 + 已跑数据 + 诚实声明
 │   └── paper/pipeline.md                       # 论文阶段与本项目的映射
 ├── scripts/
-│   ├── bench-before.ps1 / bench-before.cmd     # 对照组环境开关（停用策略 + 撤 AGENTS.md，可逆）
-│   ├── sync-tree.ps1                           # 结构库同步：工作区源 → 仓库 tree/ → 安装位（-Check 可做提交前检查）
+│   ├── bench-before.ps1 / bench-before.cmd     # 对照组环境开关（停用策略 + 撤 AGENTS.md，可逆）；记录单落 archive\<日期>-bench-before\
 │   └── verify-install.ps1 / verify-install.cmd # 空房校验：从远端 clone → 与本机安装位逐字节比对（-Ref 可验某个标签）
 ├── README.md
 └── LICENSE

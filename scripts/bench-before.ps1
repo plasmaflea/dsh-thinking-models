@@ -1,4 +1,4 @@
-﻿#Requires -Version 5.1
+#Requires -Version 5.1
 <#
 .SYNOPSIS
     对照组（before）环境开关 v2：用 DSH Skills Manager 的「停用策略」关掉思考类技能，
@@ -50,6 +50,9 @@ param(
 
     # 连 hindsight-coding-agent（agents 源）一起关
     [switch]$AlsoAgents,
+
+    # 记录单根目录。空 = <工作区>\archive（约定：实验产物一律进 archive\<日期>-<实验名>\）
+    [string]$OutRoot = '',
 
     [switch]$Restore,
     [switch]$Status,
@@ -279,7 +282,11 @@ function Show-State($s, $state) {
 
 function New-RecordSheet {
     $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
-    $path  = Join-Path $Workspace ("bench-before-record-{0}.md" -f $stamp)
+    # 约定：实验产物一律进 archive\<日期>-<实验名>\，不许落在工作区根目录
+    $dir = if ($OutRoot) { $OutRoot } else { Join-Path $Workspace 'archive' }
+    $dir = Join-Path $dir ("{0}-bench-before" -f (Get-Date -Format 'yyyyMMdd'))
+    if (-not (Test-Path -LiteralPath $dir)) { New-Item -ItemType Directory -Force -Path $dir | Out-Null }
+    $path  = Join-Path $dir ("bench-before-record-{0}.md" -f $stamp)
     $offList = ($Skills -join '` / `')
     $body = @"
 # 对照组（before）记录单 — $stamp
