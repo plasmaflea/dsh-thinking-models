@@ -28,7 +28,7 @@
 | 远端 | `https://github.com/plasmaflea/dsh-thinking-models.git`（origin） |
 | 可见性 | PUBLIC（Skills Manager 只扫公开仓库） |
 | 默认分支 | `main` |
-| 当前版本 | 见 `VERSION`（0.9.3）／标签 `v0.9.3` |
+| 当前版本 | 见 `VERSION`（0.11.0）／标签 `v0.11.0` |
 | topics | ai-agents, estimation, llm, prompt-engineering, reasoning, root-cause-analysis, skills |
 | 账号 | GitHub `plasmaflea`；`gh` CLI 已登录（scope: `gist, read:org, repo`） |
 | git 身份 | `plasmablue <1935153750@qq.com>` |
@@ -107,7 +107,7 @@ cd D:\DeepSeek-levelup\dsh-thinking-models-constants; .\scripts\sync.cmd   # 常
 # 3 验证
 .\scripts\state.cmd -Verify              # 仓库 ↔ 安装位 哈希是否一致 + 树版本
 .\scripts\verify-install.cmd             # 空房校验：远端默认分支装出来的是否与本机逐字节一致
-.\scripts\verify-install.cmd -Ref v0.9.3 # 打标签后复核该标签（发版后的最后一道）
+.\scripts\verify-install.cmd -Ref v0.11.0 # 打标签后复核该标签（发版后的最后一道）
 
 # 4 更新 CHANGELOG.md（Added/Changed/Removed/Breaking）+ VERSION
 
