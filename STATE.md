@@ -26,7 +26,7 @@
 | 远端 | `https://github.com/plasmaflea/dsh-thinking-models.git`（origin） |
 | 可见性 | PUBLIC（Skills Manager 只扫公开仓库） |
 | 默认分支 | `main` |
-| 当前版本 | 见 `VERSION`（0.6.0）／标签 `v0.6.0` |
+| 当前版本 | 见 `VERSION`（0.9.0）／标签 `v0.9.0` |
 | topics | ai-agents, estimation, llm, prompt-engineering, reasoning, root-cause-analysis, skills |
 | 账号 | GitHub `plasmaflea`；`gh` CLI 已登录（scope: `gist, read:org, repo`） |
 | git 身份 | `plasmablue <1935153750@qq.com>` |
@@ -38,8 +38,8 @@
 forest-.../tree/index.md          常量知识树索引（先读这个）
 forest-.../tree/software.md       软件大类树（六层：concurrency/quota/init/config/dependency/lifecycle）
 forest-.../tree/win-service.md    Windows 服务子类树
-structure-.../tree/index.md       结构模式库索引（6 个模式，v1）
-structure-.../tree/{multiplicative-rate,conservation,saturation,power-scale,additive-budget,queue-capacity}.md
+structure-.../tree/index.md       结构模式库索引（12 基 + 2 修饰 + 复合表，v2.4）
+structure-.../tree/{multiplicative-rate,conservation,saturation,power-scale,additive-budget,queue-capacity,feedback-loop,threshold-switch,adversarial-game,signal-inference,series-reliability,search-landscape}.md
 examples/<id>.md              ×4  每个技能一份完整样例（改动时要同步）
 docs/benchmark/README.md          before/after 实验：题面、指标、结果、诚实声明
 docs/benchmark/rubric-v4.md       v4 评分口径（10 项判定）

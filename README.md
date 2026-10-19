@@ -1,10 +1,10 @@
 # DSH Thinking Models / 三种逻辑模型思维技能
 
-三个可安装的 Agent 技能（`SKILL.md` 格式），把一个宽泛的「好好想一下」变成**可审计的产物**：林状图、网状图、结构图。外加第四个技能——一件**反面教材**：把「先有答案、再补理由」的走形摊开，供交付前三张图之前自查。
+三个可安装的 Agent 技能（`SKILL.md` 格式），把一个宽泛的「好好想一下」变成**可审计的产物**：林状图、网状图、结构图。外加第四个技能——一件**反面教材**：把「先有答案、再补理由」的走形摊开。它独立运作，不依赖也不引用前三者。
 
-Three installable agent skills (SKILL.md format) that turn a vague "think harder" into **auditable artifacts**: a causation forest, a weighted association web, and a structural pattern matched against a known problem class — with a boundary check, not just a formula. A fourth skill is a deliberate **anti-pattern**: it audits an answer for presupposed-answer backtracking before delivery.
+Three installable agent skills (SKILL.md format) that turn a vague "think harder" into **auditable artifacts**: a causation forest, a weighted association web, and a structural pattern matched against a known problem class — with a boundary check, not just a formula. A fourth skill is a deliberate **anti-pattern**: it audits an answer for presupposed-answer backtracking. It runs standalone and does not depend on the other three.
 
-> **当前版本 v0.6.0**（`VERSION` / `v0.6.0` 标签）。接手、改、验、发的完整流程见 [STATE.md](STATE.md)；变更历史见 [CHANGELOG.md](CHANGELOG.md)。
+> **当前版本 v0.9.0**（`VERSION` / `v0.9.0` 标签）。接手、改、验、发的完整流程见 [STATE.md](STATE.md)；变更历史见 [CHANGELOG.md](CHANGELOG.md)。
 >
 > 这套方法从哪来、为什么坚持先画结构再下结论——见文末 [后记](#后记这套方法是怎么来的)。
 
@@ -30,7 +30,7 @@ Three installable agent skills (SKILL.md format) that turn a vague "think harder
 
 三个作答技能互相有优先级约定：不确定用哪个时默认穷举；复杂问题按 林状图 → 网状图 → 结构图 联用。
 
-第四个技能（倒推图）不是作答模式，是**交付前的审计器**：它审「这段推理是怎么来的」，不产出答案。触发条件是已经有一个想要的结论、正在倒着找理由。
+第四个技能（倒推图）不是作答模式，是**独立的审计器**：它审「这段推理是怎么来的」，不产出答案。它自成一体——不引用其余三个技能，也不要求先有哪张图；触发条件是已经有一个想要的结论、正在倒着找理由。
 
 ---
 
@@ -44,15 +44,15 @@ Three installable agent skills (SKILL.md format) that turn a vague "think harder
 | 🕸️ 网状图 | 横向：谁和谁近 | `A — B` 带权（物理距离·关联度）；`A ⊥ B` 挂起 | 「可能相关」的悬空边 |
 | 📐 结构图 | 结构：这个陌生问题 ≅ 哪一类已经处理过的问题 | `P ≅ M`（须同时校验**变量集·边型·边界**）；三件不齐即降级为类比 | 只匹配公式形状、不校验边界的「假同构」 |
 
-### 四种动作（三张图共用）
+### 四种动作（三张图共用的骨架）
 
-1. **选轴**——轴必须**生成**（必经时序／恒等式），不得列举；每格写出「该格故障的可观测症状」。切法决定后面能看见什么。
-2. **定语法**——确定节点之间允许连哪一种边。语法没定，图就没有意义。
+1. **选轴／切出实体**——林状图按必经时序或恒等式**生成**轴（不得列举），每格写出「该格故障的可观测症状」；网状图切线索，先求全不求准。切法决定后面能看见什么。
+2. **定语法**——确定节点之间允许连哪一种边（三种语法见上表）。语法没定，图就没有意义。
 3. **配对完整**——每个节点必须完整分叉到**所有**维度／线索／自由度；没连上的就是漏掉的。
 4. **挂起也是结论**——「不是根」必须写成边，四列：分支／判定／依据／**恢复条件**。禁止删除：删掉的枝有根，只是被判为不是根。
 
-> 这套方法的关键不在图上有什么，而在图上**没有哪条边**。
-> 缺了第 4 条动作，产物就从「审查过的结构」退化成「想过的痕迹」——这也正是它区别于自由推理的地方。
+> 结构图没有「切」这一步，它多的是**取结构树 + 边界校验**：先做先例检索，再校验变量集·边型·边界是否真的同构。
+> 这套方法的关键不在图上有什么，而在图上**没有哪条边**。缺了第 4 条动作，产物就从「审查过的结构」退化成「想过的痕迹」——这也正是它区别于自由推理的地方。
 
 ### 第四张图：倒推图（反面教材，审计用）
 
@@ -70,7 +70,7 @@ Three installable agent skills (SKILL.md format) that turn a vague "think harder
 
 六种典型走形各带检测信号与纠正目标：单一假设、确认性检验、反例豁免、事后改标准、假设升格为事实、循环论证——完整表见技能正文。
 
-它和前三张图的关系是**负边审计器**：三张图共同的病根是「负边被主观偏好悄悄剪掉」，倒推图专门把这件事摊在桌面上。交付任何一张图之前，都可以先用它过一遍。
+它与前三张图**零接口**：不引用、不依赖、不假设它们存在。这样审的才是「这段推理本身」，而不是「你属于哪一派」；三张图产物的负边有没有被剪掉，只是它可以审的对象之一，不是它的前提。
 
 > 只想研究**普通人思维本身**、不需要三张图当参照时，用姊妹仓库 [dsh-ordinary-thinking](https://github.com/plasmaflea/dsh-ordinary-thinking) 里的**模拟版**：同一模型，但它不判对错，只跑轨迹、记「运气／迟到调整／改题面」三条通道。两版可同时安装（id 不同）。
 
@@ -157,8 +157,10 @@ npx skills add <owner>/dsh-thinking-models
 - **流程进技能，纪律进宿主。** 技能正文只在被调用那一次进入上下文。所以「每轮标注当前模式」「固定输出格式」这类常驻约束**不能**只写在技能里，必须由宿主的常驻指令（如 `AGENTS.md`）承担。本仓库只装流程与产物形状。
 - **`description` 是唯一的路由信号。** 决定技能会不会被加载的就是这一行，所以写成中英双语 + 具体触发词，而不是抽象的能力描述。
 - **每个技能都自带失效条件。** 「风险与对策」节是刻意保留的：它告诉模型这套方法在什么时候不成立，比再写十条使用建议有用。
-- **负边优先于正边。** 每张图都强制要求交付「被排除／被忽略」的部分。这是三套语法共同的纪律，也是它们相对自由推理唯一可验证的差异；倒推图就是专门审这条纪律有没有被主观偏好偷偷绕过。
-- **产物优先于论述。** 三个作答技能都要求先给结构（林／网／结构模式），再给结论。倒推图反过来：它先审「这个结构是怎么来的」。
+- **负边优先于正边。** 每张图都强制要求交付「被排除／被忽略」的部分。这是三套语法共同的纪律，也是它们相对自由推理唯一可验证的差异。
+- **产物优先于论述。** 三个作答技能都要求先给结构（林／网／结构模式），再给结论。倒推图相反：它先审「这个结构是怎么来的」。
+- **第 0 步在建树之前。** 林状图的入口不是直接取节点，而是 §0.3「定义→分类→概念拆解」：快档每轮验树，慢档才造树，造出的新节点登记 `v(N+1)` 候选。树是常量，常量要有造它的工序。
+- **权重是刻度的读数，不是概率。** 网状图 §2.1 把边分成关联边（无向）与支持边（有向），权重＝关系类型 × 机制步数；只排序、不求和，跨题不比较。
 
 ## 适用边界（诚实版）
 
